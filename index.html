@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<style type="text/css">
+
+		.boxs {
+			height: 100px;
+			width: 100px;
+			background-color: green;
+			border: solid;
+			position: absolute;
+		}
+		.firsBox {
+			background-color: white;
+			background-image:;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="content">
+		<h4 style="margin-left: 20px">Score: <span class="score"></span>$</h4>
+		<h4 style="margin-left: 20px"><span >победа - 400$</span></h4>
+		<img src="dice.png" class="bt" style="width: 100px; margin-left: 20px" onclick="kubik()" >		
+		<div class="boxs firsBox" style="margin-left: 20px">
+			<h4>finish</h4>
+		</div>
+		<div class="boxs" style="margin-left: 130px">1</div>
+		<div class="boxs" style="margin-left: 240px">2</div>
+		<div class="boxs" style="margin-left: 350px; background-color: red">3</div>
+				
+		<div class="boxs" style="margin-left: 460px">4</div> 
+		<div class="boxs" style="margin-left: 570px">5</div>
+		<div class="boxs" style="margin-left: 680px;  background-color: red">6</div>
+		<div class="boxs" style="margin-left: 790px">7</div>
+
+		<div class="boxs" style="margin-left: 900px">8</div>
+		<div class="boxs" style="margin-left: 1010px;background-color: red" >9</div>
+		<div class="boxs" style="margin-left: 1120px">10</div>
+		<div class="boxs" style="margin-left: 1230px">11</div>
+
+		<div class="boxs" style="margin-left: 1340px;background-color: red">12 
+			<p>иди назад на -5 клеток</p>
+		</div>
+		<div class="boxs" style="margin-left: 1340px; margin-top: 110px">13</div>
+		<div class="boxs" style="margin-left: 1340px; margin-top: 220px">14</div>	
+		<div class="boxs" style="margin-left: 1340px; margin-top: 330px">15</div>		
+
+		<div class="boxs" style="margin-left: 1340px; margin-top: 440px">16</div>
+		<div class="boxs" style="margin-left: 1230px; margin-top: 440px">17</div>
+		<div class="boxs" style="margin-left: 1120px; margin-top: 440px">18</div>
+		<div class="boxs" style="margin-left: 1010px; margin-top: 440px">19</div>
+
+		<div class="boxs" style="margin-left: 900px; margin-top: 440px">20</div>
+		<div class="boxs" style="margin-left: 790px; margin-top: 440px">21</div>
+		<div class="boxs" style="margin-left: 680px; margin-top: 440px">22</div>
+		<div class="boxs" style="margin-left: 570px; margin-top: 440px">23</div>
+
+		<div class="boxs" style="margin-left: 460px; margin-top: 440px">24</div>
+		<div class="boxs" style="margin-left: 350px; margin-top: 440px">25</div>
+		<div class="boxs" style="margin-left: 240px; margin-top: 440px">26</div>
+		<div class="boxs" style="margin-left: 130px; margin-top: 440px">27</div>
+
+		<div class="boxs" style="margin-left: 20px; margin-top: 440px">28</div>
+		<div class="boxs" style="margin-left: 20px; margin-top: 330px">29</div>
+		<div class="boxs" style="margin-left: 20px; margin-top: 220px">30</div>	
+		<div class="boxs" style="margin-left: 20px; margin-top: 110px">31</div>		
+
+		<!--последние дивы-->
+		<div class="boxs" style="margin-left: 130px; margin-top: 110px; background-color: green; opacity: 0"></div>
+		<div class="boxs" style="margin-left: 240px; margin-top: 110px; background-color: green; opacity: 0"></div>
+		<div class="boxs" style="margin-left: 350px; margin-top: 110px; background-color: green; opacity: 0"></div>
+		<div class="boxs" style="margin-left: 460px; margin-top: 110px; background-color: green; opacity: 0"></div>
+		<div class="boxs" style="margin-left: 570px; margin-top: 110px; background-color: green; opacity: 0"></div>
+		<div class="boxs" style="margin-left: 680px; margin-top: 110px; background-color: green; opacity: 0"></div>
+
+	</div>	
+		
+</body>
+</html>
+
+
+
+
+
+
+<script type="text/javascript">
+
+	let mesto = 0
+
+	let fishka = document.querySelectorAll(".boxs")
+
+	let shot = document.querySelector(".score")
+
+	let ochki = 150
+
+	shot.innerHTML = ochki
+
+	fishka[mesto].style.backgroundImage = "url(duckl.png)"
+
+	function kubik(){
+	let number = Math.round(Math.random() * 6)
+	alert(number)
+	mesto = mesto + number
+	fishka[mesto].style.backgroundImage = "url(duckl.png)"
+	fishka[mesto - number].style.background = ""
+
+	if  (number == 0){
+    fishka[mesto].style.backgroundImage = "url(duckl.png)"
+	}
+
+	if (mesto==3 || mesto == 6 || mesto == 9) {
+
+	 alert("иди на клетку назад")
+	 mesto = mesto - 1
+     fishka[mesto].style.backgroundImage = "url(duckl.png)"
+     fishka[mesto + 1].style.background = "red";
+     ochki = ochki - 20
+	shot.innerHTML = ochki
+
+	}
+	if ( mesto == 12 ) {
+
+	 alert("иди на 5 клеток назад")
+	 mesto = mesto - 5
+     fishka[mesto].style.backgroundImage = "url(duckl.png)"
+     fishka[mesto + 5].style.background = "red"
+     ochki = ochki - 50
+	 shot.innerHTML = ochki
+
+	}
+
+	if ( mesto >= 32 ) {
+
+		fishka[mesto].style.background = ""
+		mesto = mesto - 32
+		fishka[mesto].style.backgroundImage = "url(duckl.png)"
+
+		alert("ты прошёл круг!")
+		ochki = ochki + 100
+		shot.innerHTML = ochki
+
+	}
+
+	if (ochki >= 400){
+     alert("ты выйграл, молодец!")
+     window.location.reload(true);
+	}
+
+	if (ochki <= -1){
+     alert("ты проиграл, начинай заново!")
+     window.location.reload(true);
+	}
+	}
+
+</script>
